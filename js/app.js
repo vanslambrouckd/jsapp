@@ -1,4 +1,3 @@
-//define('base', function(base) {
 define(['./base'], function(base) {
     console.log(base);
     function App(config) {

@@ -7,7 +7,7 @@
             utilFunc: function() {
                 console.log('this is an utility function');
             }
-        }
+        };
         return base;
     });
 })();
