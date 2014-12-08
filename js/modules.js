@@ -5,4 +5,7 @@
             destroy: function() {}
         }
     });
+
+    console.log(this);
+    app.core.startAll();
 })(app);
