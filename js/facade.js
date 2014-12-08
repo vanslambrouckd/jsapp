@@ -21,6 +21,16 @@ By maintaining a consistent facade (simplified API), the worry about whether a m
 becomes significantly less important.
 
 2) the sandbox is permissions manager: securing what modules can / can't access
+
+facade is an abstraction of the application core (core.js) which sites between the mediator and our modules
+facade should ideally be the only other part of the system, the modules are aware of
+
+facade also should act as security guard, determining which parts of the app a module can access.
+ 
+ ----------
+ Although the architecture outlined uses a facade to implement security features,
+it's entirely possible to get by using a mediator and pub/sub to communicate events of interest throughout the application without using a facade.
+This lighter version would offer a similar level of decoupling, but ensure you're comfortable with modules directly touching the application core (mediator) if opting for this variation.
  */
 (function(app) {
     app.facade = {

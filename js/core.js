@@ -23,11 +23,14 @@ starts, stpos, restarts if necessary
                 /* start module */
                 var module = data[id];
                 module.instance = module.define(app.facade.define(this, id));
+                //todo: check if instance methos exists
+                //console.log(module.instance);
                 module.instance.init();
+                console.log(id + ' initialized');
             },
             stop: function(id) {
-                var module = data[id],
-                if(module.instance) {
+                var module = data[id];
+                if(module && module.instance) {
                     module.instance.destroy();
                 }
             },
@@ -36,25 +39,40 @@ starts, stpos, restarts if necessary
                 start all modules
                 */
                 console.log('starting all modules');
+                var id;                 
+                for (id in data) {
+                    //console.log(data['#todo-counter']);    
+                    if (data.hasOwnProperty(id)) {
+                        this.start(id);
+                    }
+                }
             },
             stopAll: function() {},
 
             events: {
-                register: function(events, module) {
+                register: function(events, module) { //=facade.subscribe
                     if (module) {
                         if (data[module]) {
-                            data.module.events = events;
+                            //console.log(events);
+                            data[module].events = events;
                         }
                     }
+
+                    //console.log(data[module].events);
                 },
-                trigger: function(events) {
+                trigger: function(events) { //=facade.publish
+                    //console.log('trigger', events, data);
+                    //console.log(data['#status-widget']);
                     var mod;
+                    console.log('----');
                     for (mod in data) {
-                        if (data.hasOwnProperty(mod)) {
+                        //console.log(data[mod].id);
+                        if (data.hasOwnProperty(mod)) {                            
                             mod = data[mod];
                             if (mod.events && mod.events[events.type]) {
+                                console.log(mod.events[events.type], events.data);
                                 mod.events[events.type](events.data);
-                            }
+                            }                            
                         }
                     }
                 },
