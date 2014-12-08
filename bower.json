@@ -1,0 +1,29 @@
+{
+  "name": "jsapp",
+  "version": "0.0.1",
+  "authors": [
+    "David Vanslambrouck"
+  ],
+  "description": "test struture for app",
+  "main": "main.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "base",
+    "structure"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15",
+    "jquery": "1.11.1"
+  }
+}
