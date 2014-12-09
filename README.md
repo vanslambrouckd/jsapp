@@ -1,4 +1,12 @@
-### TODO
-kijken hoe dom abstraction te doen:
-There's some discussion regarding just how DOM library abstraction should be ideally implemented in such an architecture:
-[writing modular javascript](http://code.tutsplus.com/tutorials/writing-modular-javascript--net-14746)
+eigen uitwerking van largescale-demo van addyosmani
+
+commentaar in de files
+
+https://speakerdeck.com/addyosmani/building-decoupled-large-scale-applications-using-javascript-and-jquery
+https://github.com/addyosmani/largescale-demo
+https://github.com/addyosmani/essential-js-design-patterns
+http://addyosmani.com/writing-modular-js/
+http://addyosmani.com/largescalejavascript/
+
+http://code.tutsplus.com/tutorials/writing-modular-javascript--net-14746
+http://scaleapp.org/
