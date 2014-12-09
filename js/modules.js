@@ -170,7 +170,7 @@ Messages can be handles by any number of modules at once.
 
                 f.subscribe({
                     'entry-validated': this.addItem
-                })
+                });
             },
             destroy: function() {
                 todo = todoItems = null;
@@ -185,6 +185,11 @@ Messages can be handles by any number of modules at once.
                         f.createElement('span', {
                             'class': 'item_name',
                             text: todoItem.value
+                        }),
+                        f.createElement('a', {
+                            'class': 'delete',
+                            text: 'delete item',
+                            'data-action': 'delete'
                         })
                     ],
                     'class': 'todo_entry'
