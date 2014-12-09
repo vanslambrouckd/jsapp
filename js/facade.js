@@ -35,30 +35,67 @@ This lighter version would offer a similar level of decoupling, but ensure you'r
 (function(app) {
     app.facade = {
         define: function(core, module) {
-        	var events = core.events;
-        	var dom = core.dom;
-
+            var events = core.events;
+            var dom = core.dom;
+            var component = core.dom.query(module)._elements;
             return {
-            	publish:function(e) {
-            		events.trigger(e);
-            	},
-            	subscribe: function(e) {
-            		events.register(e, module);
-            	},
+                publish: function(e) {
+                    events.trigger(e);
+                },
+                subscribe: function(e) {
+                    events.register(e, module);
+                },
+                ignore: function(e) {
+                    events.remove(e, module);
+                },
                 getRandomColor: function() {
-                    return app.getRandomColor();
+                    return app.randomColor();
                 },
-                animate: function() {
-                	return dom.animate(el, props, duration);
-                },
+                animate: function() {},
                 css: function(el, props) {
-                	dom.css(el, props);
+                    dom.css(el, props);
                 },
                 bind: function(el, evt, fn) {
-
+                    dom.bind(el, evt, fn);
                 },
-                unbind:function(el, evt, fn) {
-                	dom.unbind(el, evt, fn);
+                unbind: function(el, evt, fn) {
+                    dom.unbind(el, evt, fn);
+                },
+                find: function(selector) {
+                    return component.query(selector)._elements;
+                },
+                newGUID: function() {
+                    return app.utils.newGUID();
+                },
+                setHTML: function(el, content) {
+                    console.log(el);
+                    el.innerHTML = content;
+                },
+                getEl: function() {
+                    return component[0];
+                },
+                createElement: function(el, config) {
+
+                    var i, child, text;
+                    el = dom.createElement(el);
+
+                    if (config) {
+                        if (config.children && dom.isArray(config.children)) {
+                            i = 0;
+                            while (child = config.children[i]) {
+                                el.appendChild(child);
+                                i++;
+                            }
+                            delete config.children;
+                        }
+                        if (config.text) {
+                            el.appendChild(document.createTextNode(config.text));
+                            delete config.text;
+                        }
+                        dom.attr(el, config);
+                    }
+
+                    return el;
                 }
             };
         }
